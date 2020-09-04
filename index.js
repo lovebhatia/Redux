@@ -1,21 +1,49 @@
 const redux = require("redux")
 
-function increment() {
+
+function changeCount(amount =1) {
+  
   return {
-    type: "INCREMENT"
+    type: "CHANGE_ACCOUNT",
+    payload: amount
+  }
+}
+
+
+function increment(amount) {
+  
+  return {
+    type: "CHANGE_ACCOUNT",
+    payload: amount
   }
 }
 
 function decrement() {
   return {
-    type: "DECREMENT"
+    type: "DECREMENT",
+    payload: "amount"
   }
 }
 
-console.log(increment())
-console.log(decrement())
+function double() {
+  return {
+    type: "DOUBLE",
+    payload: "amount"
+  }
+}
+function halve() {
+  return {
+    type: "HALVE",
+    payload: "amount"
+  }
+}
 
-function reducer(state= {count = 0},action){
+//console.log(increment())
+//console.log(decrement())
+//console.log(double())
+//console.log(halve())
+
+function reducer(state= {count: 0},action){
    //return new state based on incoming action.type
    /*
    if(action.type==="INCREMENT"){
@@ -30,15 +58,43 @@ function reducer(state= {count = 0},action){
    }
    */
   switch(action.type) {
+     case "CHANGE_ACCOUNT":
+    return {
+       count : state.count + action.payload
+     }
     case "INCREMENT":
     return {
-       count : state.count + 1
+       count : state.count + action.payload
      }
     case "DECREMENT":
     return {
-       count : state.count - 1
+       count : state.count - action.payload
+     }
+     case "Double":
+     return {
+       count: state.count * action.payload
+     }
+     case "HALVE":
+     return {
+       count: state.count / action.payload
      }
      default:
      return state
   }
 }
+
+const store = redux.createStore(reducer)
+store.subscribe(() => {
+  console.log(store.getState())
+});
+store.dispatch(changeCount(-3))
+
+
+
+
+
+
+
+
+
+
