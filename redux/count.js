@@ -4,3 +4,5 @@ function changeCount(amount = 1) {
         payload: amount
     }
 }
+
+function countReducer(count)
