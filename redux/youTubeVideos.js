@@ -22,3 +22,53 @@ function downvoteVideo() {
         type: "DOWNVOTE_VIDEO"
     }
 }
+
+const initialState =  {
+        title: "",
+        viewCount: 0,
+        votes: {
+            up: 0,
+            down: 0
+        }
+    }
+
+console.log(initialState)
+
+function youtubevideoreducer(youTubeVideo= initialState,action){
+  switch(action.type) {
+     case "INCREMENT_VIEW_COUNT":
+            return {
+                    ...youTubeVideo,
+                    viewCount: youTubeVideo.viewCount + 1
+                }
+            
+     case "SET_YOUTUBE_TITLE":
+            return {
+                    ...youTubeVideo,
+                    title: action.payload
+                }
+            
+        case "UPVOTE_VIDEO":
+            return {
+                ...youTubeVideo,
+                    votes: {
+                      ...youTubeVideo.votes,
+                      up: youTubeVideo.votes.up + 1
+                    }
+                }
+            
+        case "DOWNVOTE_VIDEO":
+            return {
+                ...youTubeVideo,
+                    votes: {
+                        ...youTubeVideo.votes,
+                        down: youTubeVideo.votes.down + 1
+                    }
+                }
+            
+        default:
+            return youTubeVideo
+  }
+
+}
+

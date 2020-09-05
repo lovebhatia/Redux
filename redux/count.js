@@ -5,4 +5,12 @@ function changeCount(amount = 1) {
     }
 }
 
-function countReducer(count)
+function countReducer(count= 0, action) {
+  switch(action.type) {
+    case "CHANGE_COUNT":
+      return count +action.payload
+      default:
+      return count
+      
+  }
+}
