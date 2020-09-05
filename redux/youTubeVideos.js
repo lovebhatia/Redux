@@ -1,23 +1,23 @@
-function setYouTubeTitle(title) {
+export function setYouTubeTitle(title) {
     return {
         type: "SET_YOUTUBE_TITLE",
         payload: title
     }
 }
 
-function incrementViewCount() {
+export function incrementViewCount() {
     return {
         type: "INCREMENT_VIEW_COUNT"
     }
 }
 
-function upvoteVideo() {
+export function upvoteVideo() {
     return {
         type: "UPVOTE_VIDEO"
     }
 }
 
-function downvoteVideo() {
+export function downvoteVideo() {
     return {
         type: "DOWNVOTE_VIDEO"
     }
@@ -72,3 +72,4 @@ function youtubevideoreducer(youTubeVideo= initialState,action){
 
 }
 
+export default youtubevideoreducer

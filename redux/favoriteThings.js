@@ -1,11 +1,11 @@
-function addFavoriteThing(thing) {
+export function addFavoriteThing(thing) {
     return {
         type: "ADD_FAVORITE_THING",
         payload: thing
     }
 }
 
-function removeFavoriteThing(thing) {
+export function removeFavoriteThing(thing) {
     return {
         type: "REMOVE_FAVORITE_THING",
         payload: thing
@@ -26,3 +26,5 @@ function favoriteThingsReducer(favoriteThings = [],action) {
         return favoriteThings
   }
 }
+
+export default favoriteThingsReducer
