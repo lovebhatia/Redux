@@ -11,7 +11,7 @@ export function removeUserDetails(user) {
   }
 }
 
-export default function userReducer(user= {},action) {
+export default function userReducer(user=  null,action) {
   switch(action.type) {
     case "SET_USER_DETAILS":
     return {
@@ -20,7 +20,8 @@ export default function userReducer(user= {},action) {
 
     }
     case "REMOVE_USER_DETAILS":
-    return {}
+    return null
+    
     default:
     return user
   }

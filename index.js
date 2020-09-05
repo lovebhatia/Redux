@@ -21,4 +21,4 @@ store.dispatch(downvoteVideo())
 */
 store.dispatch(setUserDetails({firstName: "Love",lastName: "Bhatia",id: 1,email: "love.bhatia93@gmail.com"}))
 store.dispatch(setUserDetails({firstName: "anuj"}))
-store.dispatch(removeUserDetails({firstName: "anuj"}))
+//store.dispatch(removeUserDetails({firstName: "anuj"}))
