@@ -32,7 +32,7 @@ const initialState =  {
         }
     }
 
-console.log(initialState)
+//console.log(initialState)
 
 function youtubevideoreducer(youTubeVideo= initialState,action){
   switch(action.type) {
