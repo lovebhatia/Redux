@@ -1,100 +1,48 @@
 const redux = require("redux")
 
-
-function changeCount(amount =1) {
-  
-  return {
-    type: "CHANGE_ACCOUNT",
-    payload: amount
-  }
-}
-
-
-function increment(amount) {
-  
-  return {
-    type: "CHANGE_ACCOUNT",
-    payload: amount
-  }
-}
-
-function decrement() {
-  return {
-    type: "DECREMENT",
-    payload: "amount"
-  }
-}
-
-function double() {
-  return {
-    type: "DOUBLE",
-    payload: "amount"
-  }
-}
-function halve() {
-  return {
-    type: "HALVE",
-    payload: "amount"
-  }
-}
-
-//console.log(increment())
-//console.log(decrement())
-//console.log(double())
-//console.log(halve())
-
-function reducer(state= {count: 0},action){
-   //return new state based on incoming action.type
-   /*
-   if(action.type==="INCREMENT"){
-     return {
-       count : state.count + 1
-     }
+function changeCount(amount = 1) {
+    return {
+        type: "CHANGE_COUNT",
+        payload: amount
     }
-    else if(action.type==="DECREMENT"){
-       return {
-         count : state.count - 1
-       }
-   }
-   */
-  switch(action.type) {
-     case "CHANGE_ACCOUNT":
-    return {
-       count : state.count + action.payload
-     }
-    case "INCREMENT":
-    return {
-       count : state.count + action.payload
-     }
-    case "DECREMENT":
-    return {
-       count : state.count - action.payload
-     }
-     case "Double":
-     return {
-       count: state.count * action.payload
-     }
-     case "HALVE":
-     return {
-       count: state.count / action.payload
-     }
-     default:
-     return state
+}
+
+//action creaator
+function addFavouriteThing(thing){
+  return {
+    type: "ADD_FAVORITE_THING", //uppper snake case version of method name
+    payload: thing
   }
+}
+
+const initialState = {
+  count: 0,
+  favoriteThings: []
+}
+
+function reducer(state = initialState, action) {
+    switch(action.type) {
+        case "CHANGE_COUNT":
+            return {
+              ...state,
+                count: state.count + action.payload
+            }
+        case "ADD_FAVORITE_THING":
+        return {
+          ...state,
+          favoriteThings: [...state.favoriteThings,action.payload]
+         //favoriteThings: state.favoriteThings.push(action.payload)
+        }
+        default:
+            return state
+    }
 }
 
 const store = redux.createStore(reducer)
 store.subscribe(() => {
-  console.log(store.getState())
-});
-store.dispatch(changeCount(-3))
+    console.log(store.getState())
+})
 
-
-
-
-
-
-
-
-
-
+store.dispatch(changeCount(2))
+store.dispatch(addFavouriteThing("raindrop"))
+store.dispatch(addFavouriteThing("kittens"))
